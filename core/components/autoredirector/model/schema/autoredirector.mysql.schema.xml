@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="autoredirector" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" phpdoc-package="autoredirector" version="1.1">
+
+	<object class="arRule" table="ar_rules" extends="xPDOSimpleObject">
+		<field key="res_id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
+		<field key="context_key" dbtype="varchar" precision="100" phptype="string" null="false" default="web" />
+		<field key="uri" dbtype="text" phptype="string" null="false" index="fulltext" default="" />    
+	</object>
+
+</model>
