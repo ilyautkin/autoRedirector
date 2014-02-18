@@ -3,10 +3,10 @@
 $snippets = array();
 
 $tmp = array(
-	'autoRedirector' => array(
+	/*'autoRedirector' => array(
 		'file' => 'autoredirector',
 		'description' => '',
-	),
+	),*/
 );
 
 foreach ($tmp as $k => $v) {
