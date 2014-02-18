@@ -71,7 +71,7 @@ switch ($modx->event->name) {
             }
         }
         break;
-    case "OnHandleRequest":
+    case "OnPageNotFound":
         $uri = $_SERVER['REQUEST_URI'];
         $uri = str_replace($modx->getOption("site_url"),"",$uri);
         if (substr($uri, 0, 1) == "/") $uri = substr($uri, 1);
