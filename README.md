@@ -7,5 +7,7 @@ autoRedirector — это дополнение, которое позволит 
 ### Скриншоты:
 
 http://ilyaut.ru/assets/images/autoRedirector/1.png
+
 http://ilyaut.ru/assets/images/autoRedirector/2.png
+
 http://ilyaut.ru/assets/images/autoRedirector/3.png
