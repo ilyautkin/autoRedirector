@@ -2,17 +2,17 @@
 
 switch ($modx->event->name) {
 
-	case 'OnManagerPageInit':
-		$cssFile = MODX_ASSETS_URL.'components/autoredirector/css/mgr/main.css';
-		$modx->regClientCSS($cssFile);
-		break;
+    case "OnManagerPageInit":
+	$cssFile = MODX_ASSETS_URL.'components/autoredirector/css/mgr/main.css';
+	$modx->regClientCSS($cssFile);
+	break;
 
     case "OnBeforeDocFormSave":
         $resources = array(
                 $resource,
                 $modx->getObject('modResource',$resource->get('parent'))
             );
-        $resources = array_merge($resources, $modx->getCollection('modResource',array("id:IN" => array($modx->getChildIds($resource->id,50)))));
+        $resources = array_merge($resources, $modx->getCollection('modResource',array("id:IN" => $modx->getChildIds($resource->id,50))));
     case "OnResourceBeforeSort":
         if (empty($resources)) {
             foreach ($nodes as $node) {
@@ -31,7 +31,7 @@ switch ($modx->event->name) {
                 $resource,
                 $modx->getObject('modResource',$resource->get('parent'))
             );
-        $resources = array_merge($resources, $modx->getCollection('modResource',array("id:IN" => array($modx->getChildIds($resource->id,50)))));
+        $resources = array_merge($resources, $modx->getCollection('modResource',array("id:IN" => $modx->getChildIds($resource->id,50))));
     case "OnResourceSort":
         if (empty($resources)) {
             foreach ($nodesAffected as $node) {
