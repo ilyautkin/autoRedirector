@@ -12,7 +12,7 @@ switch ($modx->event->name) {
                 $resource,
                 $modx->getObject('modResource',$resource->get('parent'))
             );
-        $resources = array_merge($resources, $modx->getCollection('modResource',$modx->getChildIds($resource->id,50)));
+        $resources = array_merge($resources, $modx->getCollection('modResource',array("id:IN" => array($modx->getChildIds($resource->id,50)))));
     case "OnResourceBeforeSort":
         if (empty($resources)) {
             foreach ($nodes as $node) {
@@ -31,7 +31,7 @@ switch ($modx->event->name) {
                 $resource,
                 $modx->getObject('modResource',$resource->get('parent'))
             );
-        $resources = array_merge($resources, $modx->getCollection('modResource',$modx->getChildIds($resource->id,50)));
+        $resources = array_merge($resources, $modx->getCollection('modResource',array("id:IN" => array($modx->getChildIds($resource->id,50)))));
     case "OnResourceSort":
         if (empty($resources)) {
             foreach ($nodesAffected as $node) {
