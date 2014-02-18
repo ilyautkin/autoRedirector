@@ -12,7 +12,7 @@ $tmp = array(
 		    ,'OnResourceBeforeSort' => array()
 		    ,'OnDocFormSave' => array()
 		    ,'OnResourceSort' => array()
-		    ,'OnHandleRequest' => array()
+		    ,'OnPageNotFound' => array()
 		)
 	)
 );
