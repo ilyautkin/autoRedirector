@@ -3,10 +3,12 @@
 $chunks = array();
 
 $tmp = array(
+	/*
 	'tpl.autoRedirector.item' => array(
 		'file' => 'item',
 		'description' => '',
 	),
+	*/
 );
 
 // Save chunks for setup options
