@@ -1,5 +1,6 @@
 autoRedirector.grid.Items = function(config) {
 	config = config || {};
+    this.sm = new Ext.grid.CheckboxSelectionModel();
 	Ext.applyIf(config,{
 		id: 'autoredirector-grid-items'
 		,url: autoRedirector.config.connector_url
@@ -10,6 +11,7 @@ autoRedirector.grid.Items = function(config) {
 		,autoHeight: true
 		,paging: true
 		,remoteSort: true
+        ,sm: this.sm
 		,columns: [
 			{header: _('autoredirector_uri'),dataIndex: 'uri',sortable: true,width: 300}
 			,{header: _('autoredirector_res_id'),dataIndex: 'res_id',sortable: true,width: 70}
@@ -33,16 +35,24 @@ Ext.extend(autoRedirector.grid.Items,MODx.grid.Grid,{
 	windows: {}
 
 	,getMenu: function() {
-		var m = [];
-		m.push({
-			text: _('autoredirector_item_update')
-			,handler: this.updateItem
-		});
-		m.push('-');
-		m.push({
-			text: _('autoredirector_item_remove')
-			,handler: this.removeItem
-		});
+        var cs = this.getSelectedAsList();
+        var m = [];
+        if (cs.split(',').length > 1) {
+        	m.push({
+    			text: _('autoredirector_items_remove')
+    			,handler: this.removeSelected
+    		});
+        } else {
+    		m.push({
+    			text: _('autoredirector_item_update')
+    			,handler: this.updateItem
+    		});
+    		m.push('-');
+    		m.push({
+    			text: _('autoredirector_item_remove')
+    			,handler: this.removeItem
+    		});
+        }
 		this.addContextMenuItem(m);
 	}
 	
@@ -104,6 +114,42 @@ Ext.extend(autoRedirector.grid.Items,MODx.grid.Grid,{
 			}
 		});
 	}
+	
+    ,getSelectedAsList: function() {
+        var sels = this.getSelectionModel().getSelections();
+        if (sels.length <= 0) return false;
+
+        var cs = '';
+        for (var i=0;i<sels.length;i++) {
+            cs += ','+sels[i].data.id;
+        }
+        cs = cs.substr(1);
+        return cs;
+    }
+
+    ,removeSelected: function(act,btn,e) {
+        var cs = this.getSelectedAsList();
+        if (cs === false) return false;
+
+    	MODx.msg.confirm({
+			title: _('autoredirector_items_remove')
+			,text: _('autoredirector_items_remove_confirm')
+			,url: this.config.url
+			,params: {
+                action: 'mgr/items/remove'
+                ,items: cs
+            }
+            ,listeners: {
+                'success': {fn:function(r) {
+                    this.getSelectionModel().clearSelections(true);
+                    this.refresh();
+                       var t = Ext.getCmp('modx-resource-tree');
+                       if (t) { t.refresh(); }
+                },scope:this}
+            }
+        });
+        return true;
+    }
 });
 Ext.reg('autoredirector-grid-items',autoRedirector.grid.Items);
 

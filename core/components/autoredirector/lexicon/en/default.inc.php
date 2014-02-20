@@ -15,3 +15,5 @@ $_lang['autoredirector_item_remove'] = 'Remove Rule';
 $_lang['autoredirector_item_remove_confirm'] = 'Are you sure you want to remove this Rule?';
 $_lang['autoredirector_item_update'] = 'Update Rule';
 $_lang['autoredirector_intro_msg'] = 'Manage rules for redirect.';
+$_lang['autoredirector_items_remove'] = 'Remove rules';
+$_lang['autoredirector_items_remove_confirm'] = 'Do you really want to remove selected rules?';

@@ -17,3 +17,5 @@ $_lang['autoredirector_item_update'] = 'Изменить правило';
 $_lang['autoredirector_intro_msg'] = 'Управляйте правилами для редиректа.';
 $_lang['autoredirector_res_id'] = 'Ресурс';
 $_lang['autoredirector_uri'] = 'URI';
+$_lang['autoredirector_items_remove'] = 'Удалить правила';
+$_lang['autoredirector_items_remove_confirm'] = 'Вы действительно хотите удалить выбранные правила?';
