@@ -1,5 +1,9 @@
 Changelog for autoRedirector.
 
+0.0.6
+==============
+- Added multiselect and multiremove for rules
+
 0.0.5
 ==============
 - Property 'old_uri' setings anyway (even on created res)
