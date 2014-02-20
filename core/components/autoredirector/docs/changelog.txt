@@ -1,0 +1,21 @@
+Changelog for autoRedirector.
+
+0.0.5
+==============
+- Property 'old_uri' setings anyway (even on created res)
+
+0.0.4
+==============
+- Fixed selecting child resources, when context_key != 'web'
+
+0.0.3
+==============
+- Fixed selecting child resources on OnBeforeDocFormSave and OnDocFormSave
+
+0.0.2
+==============
+- Changed event, when start redirecting from OnHandleRequest to PageNotFound
+
+0.0.1
+==============
+- First beta.
