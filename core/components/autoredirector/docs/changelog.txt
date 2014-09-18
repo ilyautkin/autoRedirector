@@ -1,5 +1,9 @@
 Changelog for autoRedirector.
 
+0.0.7
+==============
+- Correct russian lexicon
+
 0.0.6
 ==============
 - Added multiselect and multiremove for rules
