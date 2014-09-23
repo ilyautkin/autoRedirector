@@ -1,5 +1,9 @@
 Changelog for autoRedirector.
 
+0.0.8
+==============
+- Fix empty id:IN when resource is not container
+
 0.0.7
 ==============
 - Correct russian lexicon
