@@ -1,5 +1,9 @@
 Changelog for autoRedirector.
 
+0.0.9
+==============
+- Fix work with different objectTypes of resources
+
 0.0.8
 ==============
 - Fix empty id:IN when resource is not container

@@ -1,6 +1,18 @@
 <?php
+$resourceEvents = array('OnBeforeDocFormSave', 'OnDocFormSave');
+if (in_array($modx->event->name, $resourceEvents)) {
+    foreach($scriptProperties as & $object){
+        if(
+            is_object($object)
+            AND $object instanceof modResource
+            AND $original = $modx->getObject('modResource', $object->id)
+        ){
+            $resource = $object;
+            break;
+        }
+    }
+}
 switch ($modx->event->name) {
-
     case "OnManagerPageInit":
 	$cssFile = MODX_ASSETS_URL.'components/autoredirector/css/mgr/main.css';
 	$modx->regClientCSS($cssFile);
