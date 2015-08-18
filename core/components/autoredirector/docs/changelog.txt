@@ -1,5 +1,9 @@
 Changelog for autoRedirector.
 
+0.1.0
+==============
+- Fix work with cyrillic urls
+
 0.0.9
 ==============
 - Fix work with different objectTypes of resources

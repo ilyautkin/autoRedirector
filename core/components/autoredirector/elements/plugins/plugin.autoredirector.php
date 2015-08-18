@@ -92,6 +92,7 @@ switch ($modx->event->name) {
         $uri = $_SERVER['REQUEST_URI'];
         $uri = str_replace($modx->getOption("site_url"),"",$uri);
         if (substr($uri, 0, 1) == "/") $uri = substr($uri, 1);
+        $uri = urldecode($uri);
 
         $RuleQ = array('uri' => $uri);
         if (!$modx->getOption('global_duplicate_uri_check')) {
