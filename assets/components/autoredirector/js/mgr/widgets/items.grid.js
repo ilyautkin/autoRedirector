@@ -162,7 +162,7 @@ autoRedirector.window.CreateItem = function(config) {
 	Ext.applyIf(config,{
 		title: _('autoredirector_item_create')
 		,id: this.ident
-		,height: 200
+		,height: 'auto'
 		,width: 475
 		,url: autoRedirector.config.connector_url
 		,action: 'mgr/item/create'
@@ -190,7 +190,7 @@ autoRedirector.window.UpdateItem = function(config) {
 	Ext.applyIf(config,{
 		title: _('autoredirector_item_update')
 		,id: this.ident
-		,height: 200
+		,height: 'auto'
 		,width: 475
 		,url: autoRedirector.config.connector_url
 		,action: 'mgr/item/update'
