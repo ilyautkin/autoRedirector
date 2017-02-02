@@ -92,6 +92,14 @@ switch ($modx->event->name) {
         $uri = $_SERVER['REQUEST_URI'];
         $uri = str_replace($modx->getOption("site_url"),"",$uri);
         if (substr($uri, 0, 1) == "/") $uri = substr($uri, 1);
+	$getparams = '';
+        if (mb_strpos($uri,'?') !== FALSE) {
+            $uri_split = explode('?',$uri);
+            $uri = $uri_split[0];
+            if(!$modx->getOption("autoredirector_clear_get",null, 0)) {
+                $getparams = $uri_split[1];
+            }
+        }
         $uri = urldecode($uri);
 
         $RuleQ = array('uri' => $uri);
@@ -101,7 +109,7 @@ switch ($modx->event->name) {
         $modelPath = $modx->getOption('autoredirector_core_path',null,$modx->getOption('core_path').'components/autoredirector/').'model/';
     	$modx->addPackage('autoredirector', $modelPath);
         if ($Rule = $modx->getObject('arRule', $RuleQ)) {
-            if ($url = $modx->makeUrl($Rule->get('res_id'))) {
+            if ($url = $modx->makeUrl($Rule->get('res_id'),'',$getparams)) {
                 $modx->sendRedirect($url,array('responseCode' => 'HTTP/1.1 301 Moved Permanently'));
             }
         }
