@@ -162,20 +162,46 @@ autoRedirector.window.CreateItem = function(config) {
 	Ext.applyIf(config,{
 		title: _('autoredirector_item_create')
 		,id: this.ident
-		,height: 200
 		,width: 475
 		,url: autoRedirector.config.connector_url
 		,action: 'mgr/item/create'
-		,fields: [
-            {xtype: 'textfield',fieldLabel: _('autoredirector_uri'),name: 'uri',id: 'autoredirector-'+this.ident+'-uri',anchor: '99%'}
-    		,{xtype: 'textfield',fieldLabel: _('autoredirector_res_id'),name: 'res_id',id: 'autoredirector-'+this.ident+'-res_id',anchor: '30%'}
-			,{xtype: 'textfield',fieldLabel: _('context'),name: 'context_key',id: 'autoredirector-'+this.ident+'-context_key',anchor: '60%'        ,listeners: {
-                afterrender: function() {
-                   this.setValue('web');    
-                }
-            }}
-		]
-
+		,fields: [{
+			xtype: 'textfield'
+			,fieldLabel: _('autoredirector_uri')
+			,name: 'uri'
+			,allowBlank: false
+			,id: 'autoredirector-'+this.ident+'-uri'
+			,anchor: '100%'
+		},{
+			xtype: 'modx-combo'
+			,fieldLabel: _('autoredirector_res_id')
+			,displayField: 'pagetitle'
+			,valueField: 'id'
+			,fields: ['id','pagetitle']
+			,name: 'res_id'
+			,hiddenName: 'res_id'
+			,url: autoRedirector.config.connector_url
+			,baseParams:{
+				action: 'mgr/resource/getlist'
+				,combo: true
+			}
+			,allowBlank: false
+			,editable: true
+			,typeAhead: true
+			,forceSelection: true
+			,id: 'autoredirector-'+this.ident+'-res_id'
+			,anchor: '100%'
+		},{
+			xtype: 'modx-combo-context'
+			,exclude: 'mgr'
+			,fieldLabel: _('context')
+			,name: 'context_key'
+			,hiddenName: 'context_key'
+			,valueField: 'key'
+			,id: 'autoredirector-'+this.ident+'-context_key'
+			,anchor: '100%'
+			,exclude: 'mgr'
+		}]
 		,keys: [{key: Ext.EventObject.ENTER,shift: true,fn: function() {this.submit() },scope: this}]
 	});
 	autoRedirector.window.CreateItem.superclass.constructor.call(this,config);
@@ -190,16 +216,50 @@ autoRedirector.window.UpdateItem = function(config) {
 	Ext.applyIf(config,{
 		title: _('autoredirector_item_update')
 		,id: this.ident
-		,height: 200
 		,width: 475
 		,url: autoRedirector.config.connector_url
 		,action: 'mgr/item/update'
-		,fields: [
-			{xtype: 'hidden',name: 'id',id: 'autoredirector-'+this.ident+'-id'}
-			,{xtype: 'textfield',fieldLabel: _('autoredirector_uri'),name: 'uri',id: 'autoredirector-'+this.ident+'-uri',anchor: '99%'}
-        	,{xtype: 'textfield',fieldLabel: _('autoredirector_res_id'),name: 'res_id',id: 'autoredirector-'+this.ident+'-res_id',anchor: '30%'}
-			,{xtype: 'textfield',fieldLabel: _('context'),name: 'context_key',id: 'autoredirector-'+this.ident+'-context_key',anchor: '60%'}
-		]
+		,fields: [{
+			xtype: 'hidden'
+			,name: 'id'
+			,id: 'autoredirector-'+this.ident+'-id'
+		},{
+			xtype: 'textfield'
+			,fieldLabel: _('autoredirector_uri')
+			,name: 'uri'
+			,allowBlank: false
+			,id: 'autoredirector-'+this.ident+'-uri'
+			,anchor: '100%'
+		},{
+			xtype: 'modx-combo'
+			,fieldLabel: _('autoredirector_res_id')
+			,displayField: 'pagetitle'
+			,valueField: 'id'
+			,fields: ['pagetitle','id']
+			,name: 'res_id'
+			,hiddenName: 'res_id'
+			,url: autoRedirector.config.connector_url
+			,baseParams:{
+				action: 'mgr/resource/getlist'
+				,combo: true
+			}
+			,allowBlank: false
+			,editable: true
+			,typeAhead: true
+			,forceSelection: true
+			,id: 'autoredirector-'+this.ident+'-res_id'
+			,anchor: '100%'
+		},{
+			xtype: 'modx-combo-context'
+			,exclude: 'mgr'
+			,fieldLabel: _('context')
+			,name: 'context_key'
+			,hiddenName: 'context_key'
+			,valueField: 'key'
+			,id: 'autoredirector-'+this.ident+'-context_key'
+			,anchor: '100%'
+			,exclude: 'mgr'
+		}]
 		,keys: [{key: Ext.EventObject.ENTER,shift: true,fn: function() {this.submit() },scope: this}]
 	});
 	autoRedirector.window.UpdateItem.superclass.constructor.call(this,config);
