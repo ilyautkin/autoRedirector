@@ -1,11 +1,18 @@
 <?php
-
 /**
- * Class autoRedirectorMainController
+ * Class AutoredirectorIndexManagerController
  */
-abstract class autoRedirectorMainController extends modExtraManagerController {
+class AutoredirectorIndexManagerController extends modExtraManagerController {
 	/** @var autoRedirector $autoRedirector */
 	public $autoRedirector;
+
+
+	/**
+	 * @return null|string
+	 */
+	public function getPageTitle() {
+		return $this->modx->lexicon('autoredirector');
+	}
 
 
 	/**
@@ -31,6 +38,21 @@ abstract class autoRedirectorMainController extends modExtraManagerController {
 
 
 	/**
+	 * @return void
+	 */
+	public function loadCustomCssJs() {
+		$this->addJavascript($this->autoRedirector->config['jsUrl'] . 'mgr/widgets/items.grid.js');
+		$this->addJavascript($this->autoRedirector->config['jsUrl'] . 'mgr/widgets/home.panel.js');
+		$this->addJavascript($this->autoRedirector->config['jsUrl'] . 'mgr/sections/home.js');
+		$this->addHtml('<script type="text/javascript">
+		Ext.onReady(function() {
+			MODx.load({ xtype: "autoredirector-page-home"});
+		});
+		</script>');
+	}
+
+
+	/**
 	 * @return array
 	 */
 	public function getLanguageTopics() {
@@ -39,23 +61,17 @@ abstract class autoRedirectorMainController extends modExtraManagerController {
 
 
 	/**
+	 * @return string
+	 */
+	public function getTemplateFile() {
+		return $this->autoRedirector->config['templatesPath'] . 'home.tpl';
+	}
+
+
+	/**
 	 * @return bool
 	 */
 	public function checkPermissions() {
 		return true;
-	}
-}
-
-
-/**
- * Class IndexManagerController
- */
-class IndexManagerController extends autoRedirectorMainController {
-
-	/**
-	 * @return string
-	 */
-	public static function getDefaultController() {
-		return 'home';
 	}
 }
