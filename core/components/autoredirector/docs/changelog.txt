@@ -1,5 +1,9 @@
 Changelog for autoRedirector.
 
+1.0.2
+==============
+- Fix old menu item
+
 1.0.1
 ==============
 - Removed modAction error
