@@ -12,7 +12,8 @@ class autoRedirectorResourceGetListProcessor extends modResourceGetListProcessor
         $query = $this->getProperty('query');
         if (!empty($query)) {
             $c->where(array(
-                'pagetitle:LIKE' => "$query%"
+                'id:LIKE' => "$query%",
+                'OR:pagetitle:LIKE' => "$query%"
             ));
         }
         return $c;

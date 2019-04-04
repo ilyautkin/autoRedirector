@@ -185,6 +185,14 @@ autoRedirector.window.CreateItem = function(config) {
 				action: 'mgr/resource/getlist'
 				,combo: true
 			}
+			,tpl: new Ext.XTemplate(
+                '<tpl for=".">\
+                    <div class="x-combo-list-item">\
+                        <strong>{pagetitle}</strong> <sup>({id})</sup>\
+                    </div>\
+                </tpl>'
+                ,{compiled: true}
+            )
 			,allowBlank: false
 			,editable: true
 			,typeAhead: true
@@ -243,6 +251,14 @@ autoRedirector.window.UpdateItem = function(config) {
 				action: 'mgr/resource/getlist'
 				,combo: true
 			}
+			,tpl: new Ext.XTemplate(
+                '<tpl for=".">\
+                    <div class="x-combo-list-item">\
+                        <strong>{pagetitle}</strong> <sup>({id})</sup>\
+                    </div>\
+                </tpl>'
+                ,{compiled: true}
+            )
 			,allowBlank: false
 			,editable: true
 			,typeAhead: true
