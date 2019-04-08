@@ -3,11 +3,11 @@
 $settings = array();
 
 $tmp = array(
-	/*'some_setting' => array(
+	'clear_get' => array(
 		'xtype' => 'combo-boolean',
-		'value' => true,
+		'value' => false,
 		'area' => 'autoredirector_main',
-	),*/
+	)
 );
 
 foreach ($tmp as $k => $v) {
