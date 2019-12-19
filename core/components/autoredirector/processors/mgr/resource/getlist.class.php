@@ -2,9 +2,9 @@
 /**
  * Get list of resources
  */
-include_once MODX_CORE_PATH.'model/modx/processors/resource/getlist.class.php';
+use MODX\Revolution\Processors\Resource\GetList;
 
-class autoRedirectorResourceGetListProcessor extends modResourceGetListProcessor
+class autoRedirectorResourceGetListProcessor extends GetList
 {
 
     public function prepareQueryBeforeCount(xPDOQuery $c)
