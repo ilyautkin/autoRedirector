@@ -1,5 +1,10 @@
 Changelog for autoRedirector.
 
+1.0.3
+==============
+- Add clearing GET-parameters
+- Change getCollection for getIterator
+
 1.0.2
 ==============
 - Fix old menu item
