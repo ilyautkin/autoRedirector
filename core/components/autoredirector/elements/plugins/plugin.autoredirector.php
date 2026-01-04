@@ -23,9 +23,13 @@ switch ($modx->event->name) {
                 $resource,
                 $modx->getObject('modResource',$resource->get('parent'))
             );
-        if($child_ids = $modx->getChildIds($resource->id,50,array('context' => $resource->context_key))){
-            $resources = array_merge($resources, $modx->getIterator('modResource',array("id:IN" => $child_ids)));
+        if (!empty($resource) && ($child_ids = $modx->getChildIds($resource->id, 50, array('context' => $resource->context_key)))) {
+            $children = $modx->getIterator('modResource', array('id:IN' => $child_ids));
+            foreach ($children as $child) {
+                $resources[] = $child; 
+            }
         }
+
     case "OnResourceBeforeSort":
         if (empty($resources)) {
             foreach ($nodes as $node) {
@@ -46,8 +50,11 @@ switch ($modx->event->name) {
                 $resource,
                 $modx->getObject('modResource',$resource->get('parent'))
             );
-        if($child_ids = $modx->getChildIds($resource->id,50,array('context' => $resource->context_key))){
-            $resources = array_merge($resources, $modx->getIterator('modResource',array("id:IN" => $child_ids)));
+        if (!empty($resource) && ($child_ids = $modx->getChildIds($resource->id, 50, array('context' => $resource->context_key)))) {
+            $children = $modx->getIterator('modResource', array('id:IN' => $child_ids));
+            foreach ($children as $child) {
+                $resources[] = $child; 
+            }
         }
     case "OnResourceSort":
         if (empty($resources)) {
