@@ -1,5 +1,9 @@
 Changelog for autoRedirector.
 
+1.0.4
+==============
+- Fix PHP8 issue
+
 1.0.3
 ==============
 - Add clearing GET-parameters
